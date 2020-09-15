@@ -308,6 +308,17 @@ static NSString * const kTableViewPanState = @"state";
     frame.origin.x = [self leftUtilityButtonsWidth];
     _contentCellView.frame = frame;
     
+    self.textLabel.frame = CGRectMake(0,
+                                      self.textLabel.frame.origin.y,
+                                      self.contentView.frame.size.width,
+                                      self.textLabel.frame.size.height);
+    
+    self.detailTextLabel.frame = CGRectMake(0,
+                                            self.detailTextLabel.frame.origin.y,
+                                            self.contentView.frame.size.width,
+                                            self.detailTextLabel.frame.size.height);
+    
+    
     self.cellScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.frame) + [self utilityButtonsPadding], CGRectGetHeight(self.frame));
     
     if (!self.cellScrollView.isTracking && !self.cellScrollView.isDecelerating)
