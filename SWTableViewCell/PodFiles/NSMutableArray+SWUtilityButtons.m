@@ -15,8 +15,18 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.backgroundColor = color;
     [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [button.titleLabel setAdjustsFontSizeToFitWidth:YES];
+
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    int titleSize = (screen.size.height == 1024) ? 17 : 15;
+    [button.titleLabel setFont:[UIFont fontWithName:@"DaysOne-Regular" size:titleSize]];
+    [button setTitleColor:[UIColor colorWithRed:4.0/255.0 green:203.0/255.0 blue:9.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    button.titleLabel.layer.shadowColor = [[UIColor colorWithRed:4.0/255.0 green:203.0/255.0 blue:9.0/255.0 alpha:1.0] CGColor];
+    button.titleLabel.layer.shadowRadius = 3.0;
+    button.titleLabel.layer.shadowOpacity = 1.0;
+    button.titleLabel.layer.shadowOffset = CGSizeZero;
+    button.titleLabel.layer.masksToBounds = NO;
+    
     [self addObject:button];
 }
 
