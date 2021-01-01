@@ -89,20 +89,9 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
     [self.cellScrollView addSubview:_contentCellView];
     
     // Add the cell scroll view to the cell
-    UIView *contentViewParent = self;
     UIView *clipViewParent = self.cellScrollView;
-    if (![NSStringFromClass([[self.subviews objectAtIndex:0] class]) isEqualToString:kTableViewCellContentView])
-    {
-        // iOS 7
-        contentViewParent = [self.subviews objectAtIndex:0];
-        clipViewParent = self;
-    }
-    NSArray *cellSubviews = [contentViewParent subviews];
     [self insertSubview:self.cellScrollView atIndex:0];
-    for (UIView *subview in cellSubviews)
-    {
-        [_contentCellView addSubview:subview];
-    }
+    [_contentCellView addSubview:self.contentView];
     
     // Set scroll view to perpetually have same frame as self. Specifying relative to superview doesn't work, since the latter UITableViewCellScrollView has different behaviour.
     [self addConstraints:@[
